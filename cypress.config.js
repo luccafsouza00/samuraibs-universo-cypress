@@ -8,12 +8,12 @@ module.exports = defineConfig({
       // implement node event listeners here
 
       const pool = new Pool({
-        user: 'neondb_owner',
-        password: 'npg_yNsXVz9WYM4P',
-        host: 'ep-blue-moon-a4gtw5t0-pooler.us-east-1.aws.neon.tech',
-        port: 5432,
-        database: 'neondb',
-        ssl: { rejectUnauthorized: false },
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
+        database: process.env.DB_NAME,
+        ssl: process.env.DB_SSL === "true" ? { rejectUnauthorized: false } : false,
       })
 
       on ('task', {
